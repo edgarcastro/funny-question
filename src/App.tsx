@@ -1,12 +1,21 @@
 import React from 'react';
 import './App.css';
-import { FunnyQuestion } from './components/FunnyQuestion';
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+import { FormQuestion } from './components/FormQuestion';
+import { AskMePage } from './containers/AskMePage';
 
 function App() {
   return (
     <div className="App">
       <main>
-        <FunnyQuestion question="Do you want pizza?" option="No" optionUnreachable="Yes" />
+        <Routes>
+          <Route path="/" element={<FormQuestion />} />
+          <Route path="/askme" element={<AskMePage />} />
+          <Route path="/askme/:id" element={<AskMePage />} />
+        </Routes>
       </main>
     </div>
   );
