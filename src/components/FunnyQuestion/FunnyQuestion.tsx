@@ -47,14 +47,14 @@ export const FunnyQuestion: React.FC<FunnyQuestionProps> = props => {
     const buttonUnrecheableStyles: React.CSSProperties = {
         ...buttonPositionStyles,
         position: isFirstMouseOver ? 'absolute' : 'initial',
-        transition: 'top 0.1s ease 0.1s, left 0.1s ease 0.1s'
+        transition: 'top 0.01s ease 0.01s, left 0.01s ease 0.01s'
     }
 
     return <Paper className="FunnyQuestion">
         <h2>{props.question}</h2>
         <Stack className="FunnyQuestion__options" spacing={2} direction="row" justifyContent="flex-start">
             <Button onClick={handleRequiredClick} variant="contained">{props.option}</Button>
-            <Button tabIndex={-1} style={buttonUnrecheableStyles} onMouseOver={handleMouseOver} variant="contained">{props.optionUnreachable}</Button>
+            <Button tabIndex={-1} style={buttonUnrecheableStyles} onMouseOver={handleMouseOver} onTouchStart={handleMouseOver} variant="contained">{props.optionUnreachable}</Button>
         </Stack>
     </Paper>
 }
