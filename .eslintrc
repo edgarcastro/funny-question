@@ -1,0 +1,58 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react-hooks"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-const-assign": "warn",
+    "no-this-before-super": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "no-unused-vars": "off",
+    "constructor-super": "warn",
+    "valid-typeof": "warn",
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "object-shorthand": [
+      "error",
+      "always",
+      { "avoidExplicitReturnArrows": true }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-unused-vars": "warn"
+  },
+  "globals": {
+    "cy": true,
+    "shallow": true,
+    "mount": true,
+    "sinon": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

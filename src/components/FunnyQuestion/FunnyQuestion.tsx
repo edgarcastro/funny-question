@@ -1,7 +1,7 @@
-import { Button, Stack, Paper } from "@mui/material";
-import React, { useState } from "react";
+import { Button, Stack, Paper } from '@mui/material';
+import React, { useState } from 'react';
 
-import "./FunnyQuestion.scss";
+import './FunnyQuestion.scss';
 
 interface RequiredProps {
   question: string;
@@ -23,7 +23,7 @@ function getRandomArbitrary(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
-export const FunnyQuestion: React.FC<FunnyQuestionProps> = (props) => {
+export const FunnyQuestion: React.FC<FunnyQuestionProps> = props => {
   const [isFirstMouseOver, setIsFirstMouseOver] = useState(false);
   const [buttonPositionStyles, setButtonPositionStyles] =
     useState<React.CSSProperties>({});
@@ -38,17 +38,17 @@ export const FunnyQuestion: React.FC<FunnyQuestionProps> = (props) => {
     const top = getRandomArbitrary(0, height * 0.9);
     const left = getRandomArbitrary(0, width * 0.9);
 
-    setButtonPositionStyles({ position: "absolute", left, top });
+    setButtonPositionStyles({ position: 'absolute', left, top });
   };
 
   const handleRequiredClick = () => {
-    alert("Felicidades");
+    alert('Felicidades');
   };
 
   const buttonUnrecheableStyles: React.CSSProperties = {
     ...buttonPositionStyles,
-    position: isFirstMouseOver ? "absolute" : "initial",
-    transition: "top 0.01s ease 0.01s, left 0.01s ease 0.01s",
+    position: isFirstMouseOver ? 'absolute' : 'initial',
+    transition: 'top 0.01s ease 0.01s, left 0.01s ease 0.01s',
   };
 
   return (
@@ -58,8 +58,7 @@ export const FunnyQuestion: React.FC<FunnyQuestionProps> = (props) => {
         className="FunnyQuestion__options"
         spacing={2}
         direction="row"
-        justifyContent="flex-start"
-      >
+        justifyContent="flex-start">
         <Button onClick={handleRequiredClick} variant="contained">
           {props.option}
         </Button>
@@ -68,8 +67,7 @@ export const FunnyQuestion: React.FC<FunnyQuestionProps> = (props) => {
           style={buttonUnrecheableStyles}
           onMouseOver={handleMouseOver}
           onTouchStart={handleMouseOver}
-          variant="contained"
-        >
+          variant="contained">
           {props.optionUnreachable}
         </Button>
       </Stack>
