@@ -1,10 +1,7 @@
 import { FirebaseOptions, initializeApp } from 'firebase/app';
-import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 
-const {
-  REACT_APP_EMULATORS_ENABLED: emulatorsEnabled,
-} = process.env;
-
+const { REACT_APP_EMULATORS_ENABLED: emulatorsEnabled } = process.env;
 
 const getConfig: FirebaseOptions = {
   apiKey: process.env.REACT_APP_FB_API_KEY || 'localKey',
