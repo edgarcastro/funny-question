@@ -1,33 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
-import { collection, addDoc, CollectionReference } from 'firebase/firestore';
-import { db } from '../../firebase';
+
 import { QuestionType } from '../../utils/types';
 import './FormQuestion.scss';
 
-export const FormQuestion: React.FC = () => {
+interface RequiredProps {
+  onSubmit: (data: QuestionType) => void;
+}
+
+type FormQuestionProps = RequiredProps;
+
+export const FormQuestion: React.FC<FormQuestionProps> = props => {
   const [question, setQuestion] = useState('');
   const [option1, setOption1] = useState('');
   const [option2, setOption2] = useState('');
-  const navigate = useNavigate();
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const docRef = await addDoc<QuestionType>(
-        collection(db, 'questions') as CollectionReference<QuestionType>,
-        {
-          questionDescription: question,
-          option1,
-          option2,
-        }
-      );
-      console.log('Document written with ID: ', docRef.id);
-      navigate(`/askme/${docRef.id}`);
-    } catch (e) {
-      console.error('Error adding document: ', e);
-    }
+    props.onSubmit({
+      questionDescription: question,
+      option1,
+      option2,
+    });
   };
 
   return (
