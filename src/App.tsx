@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { FormQuestion } from './components/FormQuestion';
 import { AskMePage } from './containers/AskMePage';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <main>
@@ -16,6 +16,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;
