@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import { AskMePage } from './containers/AskMePage';
 import { CreatePage } from './containers/CreatePage';
 import { HomePage } from './containers/HomePage';
+import { ResultsPage } from './containers/ResultsPage';
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
           <Route path="/create" element={<CreatePage />} />
           <Route path="/askme" element={<AskMePage />} />
           <Route path="/askme/:id" element={<AskMePage />} />
+          <Route path="/results/:id" element={<ResultsPage />} />
         </Routes>
       </main>
     </div>
