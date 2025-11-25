@@ -8,7 +8,6 @@ Aplicación web para crear y compartir preguntas divertidas con opciones interac
 - TypeScript
 - Vite
 - Material-UI
-- React Router
 
 ## Scripts Disponibles
 

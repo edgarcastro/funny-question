@@ -1,4 +1,3 @@
-import { Button, Stack, Paper } from '@mui/material';
 import React, { useState } from 'react';
 
 import './FunnyQuestion.scss';
@@ -24,53 +23,44 @@ function getRandomArbitrary(min: number, max: number) {
 }
 
 export const FunnyQuestion: React.FC<FunnyQuestionProps> = props => {
-  const [isFirstMouseOver, setIsFirstMouseOver] = useState(false);
+  const { height, width } = getWindowDimensions();
   const [buttonPositionStyles, setButtonPositionStyles] =
-    useState<React.CSSProperties>({});
+    useState<React.CSSProperties>({
+      left: width / 2 + 80,
+    });
 
   const handleMouseOver = () => {
-    if (!isFirstMouseOver) {
-      setIsFirstMouseOver(true);
-    }
+    console.log('handleMouseOver');
+    const top = getRandomArbitrary(0, height * 0.7);
+    const left = getRandomArbitrary(0, width * 0.7);
 
-    const { height, width } = getWindowDimensions();
-
-    const top = getRandomArbitrary(0, height * 0.9);
-    const left = getRandomArbitrary(0, width * 0.9);
-
-    setButtonPositionStyles({ position: 'absolute', left, top });
+    setButtonPositionStyles({ left, top });
   };
 
   const handleRequiredClick = () => {
     alert('Felicidades');
   };
 
-  const buttonUnrecheableStyles: React.CSSProperties = {
-    ...buttonPositionStyles,
-    position: isFirstMouseOver ? 'absolute' : 'initial',
-    transition: 'top 0.01s ease 0.01s, left 0.01s ease 0.01s',
-  };
-
   return (
-    <Paper className="FunnyQuestion">
+    <div className="FunnyQuestion">
       <h2>{props.question}</h2>
-      <Stack
-        className="FunnyQuestion__options"
-        spacing={2}
-        direction="row"
-        justifyContent="flex-start">
-        <Button onClick={handleRequiredClick} variant="contained">
+      <div className="FunnyQuestion__options">
+        <button
+          type="button"
+          onClick={handleRequiredClick}
+          className="FunnyQuestion__button FunnyQuestion__button--fixed">
           {props.option}
-        </Button>
-        <Button
+        </button>
+        <button
+          type="button"
           tabIndex={-1}
-          style={buttonUnrecheableStyles}
+          style={buttonPositionStyles}
           onMouseOver={handleMouseOver}
           onTouchStart={handleMouseOver}
-          variant="contained">
+          className={`FunnyQuestion__button FunnyQuestion__button--unreachable`}>
           {props.optionUnreachable}
-        </Button>
-      </Stack>
-    </Paper>
+        </button>
+      </div>
+    </div>
   );
 };

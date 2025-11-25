@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('./assets/fonts/SourceCodePro-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 200 900;
+  font-style: normal;
+}
+
+body {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Source Code Pro', monospace;
+}
