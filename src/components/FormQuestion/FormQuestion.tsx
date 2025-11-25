@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-
+import React, { useState } from 'react';
 import { QuestionType } from '../../utils/types';
 import './FormQuestion.scss';
 
@@ -18,7 +17,7 @@ export const FormQuestion: React.FC<FormQuestionProps> = props => {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     props.onSubmit({
-      questionDescription: question,
+      question,
       option1,
       option2,
     });

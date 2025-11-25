@@ -10,21 +10,8 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          touch .env
-          echo REACT_APP_FB_API_KEY=$FB_API_KEY >> .env
-          echo REACT_APP_FB_AUTH_DOMAIN=$FB_AUTH_DOMAIN >> .env
-          echo REACT_APP_FB_PROJECT_ID=$FB_PROJECT_ID >> .env
-          echo REACT_APP_FB_APP_ID=$FB_APP_ID >> .env
-          echo REACT_APP_FB_MEASUREMENT_ID=$FB_MEASUREMENT_ID >> .env
-        env:
-          FB_API_KEY: ${{ secrets.FB_API_KEY }}
-          FB_AUTH_DOMAIN: ${{ secrets.FB_AUTH_DOMAIN }}
-          FB_PROJECT_ID: ${{ secrets.FB_PROJECT_ID }}
-          FB_APP_ID: ${{ secrets.FB_APP_ID }}
-          FB_MEASUREMENT_ID: ${{ secrets.FB_MEASUREMENT_ID }}
-      - run: npm i && npm run build
+      - uses: actions/checkout@v6
+      - run: yarn && yarn build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
